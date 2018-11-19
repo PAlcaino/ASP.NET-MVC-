@@ -1,0 +1,22 @@
+﻿@model GeneracionInvitaciones.Models.RespuestaInvitado
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="~/Content/estilos.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Gracias </title>
+</head>
+<body>    
+    <div class="alert alert-success col-md-4 col-md-offset-4 align-middle" role="alert">
+        <h1>Gracias @Model.Nombre tu peticion fue completada con exito!!</h1>
+        <p>Se ha enviado un email a tu correo para confirmar la asistencia.</p>
+    </div>
+</body>
+</html>
