@@ -30,13 +30,22 @@ namespace GeneracionInvitaciones.Controllers
         [HttpPost]
         public async Task<ViewResult> RsvpForm(RespuestaInvitado respuesta)
         {
-            string to = "palcaino.lleite@gmail.com";
+            string to = respuesta.Correo;
             string subject = "Notificacion de Reunion";
             string body = string.Empty;
-
-            if(ModelState.IsValid)
+            string asistira = string.Empty;
+            if (ModelState.IsValid)
             {
-                body = string.Format("Gracias"+ ViewBag.Nombre);
+                if((bool)respuesta.Asistira)
+                {
+                    asistira = "asistencia";
+                }
+                else
+                {
+                    asistira = "no asistencia";
+                }
+                body = string.Format("Gracias {0} por completar el formulario de reunion, tu {1} ha sido confirmada ", 
+                    respuesta.Nombre, asistira);
                 await MailHelper.SendEmail(to,subject,body);
                 return View("Gracias", respuesta);
             }
